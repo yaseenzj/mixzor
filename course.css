@@ -1,0 +1,225 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: system-ui, -apple-system, sans-serif;
+    min-height: 100vh;
+    background: linear-gradient(45deg, #000000, #4a148c, #ffffff);
+    color: white;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 2rem;
+    background: linear-gradient(to right, #9c27b0, #ffffff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 10px rgba(156, 39, 176, 0.3);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+@media (max-width: 1024px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.subject-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 0.25rem;
+    border-radius: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.subject-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card-content {
+    padding: 1.5rem;
+    border-radius: 0.9rem;
+    height: 100%;
+}
+
+.icon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.icon-container svg {
+    width: 2.5rem;
+    height: 2.5rem;
+    color: #ffffff;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.card-description {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    color: white;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    transition: opacity 0.2s;
+}
+
+.back-button:hover {
+    opacity: 0.8;
+}
+
+.hidden {
+    display: none;
+}
+
+.courses-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+@media (max-width: 1024px) {
+    .courses-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .courses-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.course-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    transition: transform 0.2s;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+}
+
+.course-card:hover {
+    transform: translateY(-5px);
+}
+
+.watch-button {
+    margin-top: 1rem;
+    width: 100%;
+    background: #9c27b0;
+    color: white;
+    font-weight: bold;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.watch-button:hover {
+    background: #7b1fa2;
+}
+
+.completed-mark {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: #4caf50;
+    color: white;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.875rem;
+    display: none;
+}
+
+.course-card.completed .completed-mark {
+    display: block;
+}
+
+.course-card.completed .watch-button {
+    background: #4caf50;
+}
+
+.course-card.completed .watch-button:hover {
+    background: #388e3c;
+}
+
+.certificate-container {
+    text-align: center;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f0f8ff; /* Light Blue Background */
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.certificate-container.hidden {
+    display: none;
+}
+
+.generate-certificate-button {
+    background-color: #2ecc71; /* Green Button */
+    color: #fff;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.generate-certificate-button:hover {
+    background-color: #27ae60;
+}

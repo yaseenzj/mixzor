@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+        <!-- jsPDF library -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+        <!-- FileSaver.js library -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Learning Platform</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="course.css">
+</head>
+<body>
+    <div class="min-h-screen">
+        <div class="container">
+            <h1>E-Learning Platform</h1>
+            
+            <div id="subjects-container" class="grid">
+                <!-- Subject cards will be inserted here -->
+            </div>
+
+            <div id="courses-container" class="hidden">
+                <button id="back-button" class="back-button">
+                    ← Back to Subjects
+                </button>
+                <div class="courses-grid">
+                    <!-- Course cards will be inserted here -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="courses" id="courses-container">
+        <div class="header-section">
+          <h2>Lessons</h2>
+          <button id="back-button" class="back-button">← All Subjects</button>
+        </div>
+        <div class="courses-grid"></div>
+        <div id="certificate-container" class="certificate-container hidden">
+          Congratulations! You've completed all courses.
+          <button id="generate-certificate" class="generate-certificate-button">
+            Generate Certificate
+          </button>
+        </div>
+      </section>
+      
+    <script src="course.js"></script>
+</body>
+</html>
