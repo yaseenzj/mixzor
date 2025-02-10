@@ -1,0 +1,222 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap");
+
+:root {
+    --gradient-start: #4158D0;
+    --gradient-middle: #C850C0;
+    --gradient-end: #FFCC70;
+    --primary: #FFD60A;
+    --white: #FFFFFF;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Nunito", sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(45deg, var(--gradient-start), var(--gradient-middle), var(--gradient-end));
+    color: var(--white);
+    overflow-x: hidden;
+}
+
+#particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.dashboard {
+    position: relative;
+    z-index: 2;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    color: white;
+    padding: 20px;
+    border-radius: 10px 10px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1px;
+}
+
+h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+}
+
+.profile-pic {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+    border: 2px solid var(--primary);
+}
+
+.username {
+    font-weight: bold;
+}
+
+nav {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: space-around;
+    padding: 15px 0;
+    margin-bottom: 1px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    transition: all 0.3s;
+}
+
+nav a:hover,
+nav a.active {
+    background: var(--primary);
+    color: #000;
+}
+
+main {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 0 0 10px 10px;
+}
+
+.streaks {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.streak-counter {
+    font-size: 48px;
+    font-weight: bold;
+    color: var(--primary);
+}
+
+.streak-text {
+    font-size: 24px;
+    color: var(--white);
+}
+
+.streak-flame {
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 60px;
+    background-image: url('data:image/svg+xml;utf8,');
+    background-size: contain;
+    animation: flicker 0.5s infinite alternate;
+}
+
+@keyframes flicker {
+    0% { opacity: 0.8; }
+    100% { opacity: 1; }
+}
+
+.ongoing-courses h2 {
+    color: var(--white);
+    margin-bottom: 20px;
+}
+
+.course-list {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.course {
+    width: calc(33.33% - 14px);
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.course:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.course-thumb {
+    width: 100%;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.course h3 {
+    margin: 0 0 10px 0;
+    color: var(--white);
+}
+
+.progress-bar {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    height: 10px;
+    overflow: hidden;
+}
+
+.progress {
+    background: var(--primary);
+    height: 100%;
+    transition: width 0.5s;
+}
+
+@media (max-width: 768px) {
+    .dashboard {
+        padding: 10px;
+    }
+
+    .course {
+        width: 100%;
+    }
+
+    header {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+
+    nav {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    nav a {
+        width: calc(50% - 10px);
+        text-align: center;
+    }
+}
+
+
+
