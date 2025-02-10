@@ -14,6 +14,11 @@ const showSignUpBtn = document.getElementById('showSignUpBtn');
 const getStartedBtn = document.getElementById('getStartedBtn');
 const showSignUpLink = document.getElementById('showSignUp');
 const showSignInLink = document.getElementById('showSignIn');
+const streakCountElement = document.getElementById('streakCount');
+const navButtons = document.querySelectorAll(".dashboard-nav a");
+const backToHomeBtn = document.getElementById('backToHome');
+const courseCards = document.querySelectorAll('.course-card');
+const logoutBtn = document.getElementById('logoutBtn');
 
 // Close auth modal when clicking outside
 authContainer.addEventListener('click', (e) => {
@@ -33,16 +38,16 @@ function showAuth(mode = 'signin') {
     homePage.classList.add('hidden');
     authContainer.classList.remove('hidden');
     dashboard.classList.add('hidden');
-    
-    const signIn = document.querySelector('.sign-in');
-    const signUp = document.querySelector('.sign-up');
-    
+
+    const signInForm = document.querySelector('.sign-in');
+    const signUpForm = document.querySelector('.sign-up');
+
     if (mode === 'signin') {
-        signIn.classList.remove('hidden');
-        signUp.classList.add('hidden');
+        signInForm.classList.remove('hidden');
+        signUpForm.classList.add('hidden');
     } else {
-        signUp.classList.remove('hidden');
-        signIn.classList.add('hidden');
+        signUpForm.classList.remove('hidden');
+        signInForm.classList.add('hidden');
     }
 }
 
@@ -93,33 +98,7 @@ signupForm.addEventListener('submit', (e) => {
     document.querySelector('.sign-in').classList.remove('hidden');
 });
 
-// Animation for streak count
-let streakCount = 0;
-const streakCountElement = document.getElementById('streakCount');
-const targetStreak = 27;
-
 // Dashboard functionality
-const backToHomeBtn = document.getElementById('backToHome');
-const courseCards = document.querySelectorAll('.course-card');
-const logoutBtn = document.getElementById('logoutBtn');
-logoutBtn.addEventListener('click', () => {
-    // Redirect to the logout page
-    document.cookie = 'username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
-    window.location.href = 'dashboard.html';
-});
-
-// Add click event to navigation items
-const navButtons = document.querySelectorAll(".dashboard-nav .nav-button"); // Select button elements
-navButtons.forEach((button) => {
-    button.addEventListener("click", (e) => {
-        // Remove active class from all buttons
-        navButtons.forEach((btn) => btn.classList.remove("active"));
-
-        // Add active class to the clicked button
-        button.classList.add("active");
-    });
-});
-
 
 // Back to home functionality
 backToHomeBtn.addEventListener('click', () => {
@@ -127,7 +106,19 @@ backToHomeBtn.addEventListener('click', () => {
 });
 
 // Navigation buttons
+navButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        navButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+    });
+});
 
+logoutBtn.addEventListener('click', () => {
+    // Redirect to the logout page
+    document.cookie = 'username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+    window.location.href = 'index.html'; //back to the landing page
+    // Or if you have an showHome function, you can call it
+});
 
 // Course cards interaction
 courseCards.forEach(card => {
@@ -135,7 +126,7 @@ courseCards.forEach(card => {
         const courseName = card.dataset.course;
         const progressBar = card.querySelector('.progress-bar');
         const currentWidth = parseInt(progressBar.style.width);
-        
+
         // Simulate progress update
         if (currentWidth < 100) {
             progressBar.style.width = `${Math.min(currentWidth + 10, 100)}%`;
@@ -153,11 +144,23 @@ courseCards.forEach(card => {
     });
 });
 
+// Simulate streak increase
+let streakCount = 7;
+const streakCounter = document.querySelector(".streak-number");
+setInterval(() => {
+    streakCount++;
+    streakCounter.textContent = streakCount;
+    streakCounter.style.transform = "scale(1.2)";
+    setTimeout(() => {
+        streakCounter.style.transform = "scale(1)";
+    }, 300);
+}, 5000);
+
 // Streak animation
 function animateStreak() {
     streakCount = 0;
     const animate = () => {
-        if (streakCount < targetStreak) {
+        if (streakCount < 27) {
             streakCount++;
             streakCountElement.textContent = streakCount;
             setTimeout(animate, 50);
