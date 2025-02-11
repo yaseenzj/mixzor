@@ -13,16 +13,27 @@
             <nav class="nav-bar">
                 <div class="logo">EduAI </div>
                 <div class="nav-links">
-                    <a href="#" class="active">Home</a>
-                    <a href="http://127.0.0.1:5000/" class="active">Parents</a>
+                    <a href="#" >Home</a>
+                    <a href="http://127.0.0.1:5000/" >Parents</a>
                     <a href="about.html">About</a>
                     <button id="showLoginBtn" class="sign-in-btn">Sign In</button>
                     <button id="showSignUpBtn" class="sign-up-btn">Sign Up</button>
                 </div>
             </nav>
-            
+            <!-- Video Modal -->
+<div id="video-modal" class="modal hidden">
+    <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <div id="video-container">
+            <!-- YouTube video will be embedded here -->
+        </div>
+    </div>
+</div>
+
             <div class="hero-section">
-                <div class="floating-emoji">🤖</div>
+                <img src="https://i.ibb.co/6c2sKRcf/pngtree-child-sitting-in-office-chair-using-laptop-clipart-png-image-14218590.png" 
+             alt="Child using laptop" 
+             class="subheading-img">
                 <h1>Learn and Play with<br><span class="highlight">EduAI</span></h1>
                 <p>Discover a world of fun and interactive learning experiences tailored just for you!</p>
                 <div class="cta-buttons">
@@ -90,12 +101,12 @@
             </div>
             
             <div class="dashboard-nav">
-                <a href="index.html" class="nav-button active" data-section="home">Home</a>
-                <a href="stats.html" class="nav-button" data-section="stats">Stats</a>
+                <a href="dashboard.html" class="nav-button active" data-section="home">Home</a>
+                <a href="http://127.0.0.1:5500/stats.html" class="nav-button" data-section="stats">Stats</a>
                 <a href="courses.html" class="nav-button" data-section="stats">Courses</a>
                 <a href="games.html" class="nav-button" data-section="games">Games</a>
-                <a href="http://127.0.0.1:5000/quiz_g1#" class="nav-button" data-section="assessments">Quiz</a>
-                <button class="nav-button" id="logoutBtn">Logout</button>
+                <a href="C:\Users\mhyas\Downloads\hackathonn\quiz_g1.html" class="nav-button" data-section="assessments">Quiz</a>
+                <a href="dashboard.html" class="nav-button" data-section="logout">Logout</a>
             </div>
             
 
@@ -103,7 +114,7 @@
                 <div class="learning-streak-card">
                     <h2>Your Learning Streak</h2>
                     <div class="streak-count">
-                        <span id="streakCount">0</span>
+                        <span id="streakCount">23</span>
                         <span>days</span>
                     </div>
                     <div class="streak-badges">

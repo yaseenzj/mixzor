@@ -27,6 +27,88 @@ authContainer.addEventListener('click', (e) => {
     }
 });
 
+
+function createCourseCards(subjectKey) {
+    const subject = subjects[subjectKey];
+    const coursesGrid = coursesContainer.querySelector('.courses-grid');
+
+    coursesGrid.innerHTML = subject.courses
+        .map(course => `
+            <div class="course-card ${completedCourses.has(`${subjectKey}-${course.id}`) ? 'completed' : ''}" 
+                 data-course-id="${subjectKey}-${course.id}">
+                <div class="completed-mark">
+                    <i data-lucide="check"></i> Completed
+                </div>
+                <div class="icon-container">
+                    <i data-lucide="play-circle"></i>
+                </div>
+                <h3 class="card-title">${course.title}</h3>
+                <p class="card-description">${course.description}</p>
+                <button class="watch-button" data-youtube="${course.youtube}">
+                    <i data-lucide="play"></i>
+                    Watch Now
+                </button>
+            </div>
+        `)
+        .join('');
+
+    lucide.createIcons();
+
+    // Add click handlers for watch buttons
+    coursesGrid.querySelectorAll('.watch-button').forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const youtubeLink = button.dataset.youtube;
+            //window.open(youtubeLink, '_blank'); // Open YouTube video in new tab
+
+            // Get the video ID from the YouTube link
+            const videoId = youtubeLink.split('v=')[1];
+            const ampersandPosition = videoId.indexOf('&');
+            if (ampersandPosition != -1) {
+                videoId = videoId.substring(0, ampersandPosition);
+            }
+
+            // Embed the YouTube video in the modal
+            const videoContainer = document.getElementById('video-container');
+            videoContainer.innerHTML = `<iframe width="560" height="315" src="https://www.youtube.com/embed/${videoId}" frameborder="0" allowfullscreen></iframe>`;
+
+            const videoModal = document.getElementById('video-modal');
+            videoModal.classList.remove('hidden');
+
+            const courseCard = button.closest('.course-card');
+            const courseId = courseCard.dataset.courseId;
+
+            // 10-second delay before marking as completed
+            setTimeout(() => {
+                completedCourses.add(courseId);
+                courseCard.classList.add('completed');
+                // Check if all courses are completed
+                if (checkIfSubjectCompleted(subjectKey)) {
+                    showCertificate(subjectKey);
+                }
+            }, 10000);
+        });
+    });
+}
+// Get the modal
+const modal = document.getElementById("video-modal");
+
+// Get the button that closes the modal
+const span = document.getElementsByClassName("close-button")[0];
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.classList.add('hidden');
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.classList.add('hidden');
+  }
+}
+
+
 // Show/Hide Functions
 function showHome() {
     homePage.classList.remove('hidden');

@@ -15,6 +15,54 @@ body {
     width: 100%;
     min-height: 100vh;
 }
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+/* Add Animation */
+@keyframes animatetop {
+    from {top: -300px; opacity: 0}
+    to {top: 15%; opacity: 1}
+}
+
+/* The Close Button */
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
+}
 
 /* Navigation */
 .nav-bar {
@@ -65,14 +113,18 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 2rem;
+    padding: 6rem;
     position: relative;
     overflow: hidden;
 }
+.hero-section img {
+    width: 20%; 
+    height: auto;      
+}
 
 .hero-section h1 {
-    font-size: 4.5rem;
-    color: white;
+    font-size: 3rem;
+    color: rgb(255, 255, 255);
     margin-bottom: 1.5rem;
     line-height: 1.2;
     animation: fadeInUp 0.8s ease;
